@@ -3,7 +3,7 @@ library(ggplot2)
 
 # file
 data <- read.csv("China_EO_49to17.csv",fileEncoding = "latin1")
-data <- as_tibble(file)
+data <- as_tibble(data)
 
 Year <- seq(from=1949, to=2017)
 data$Year <- Year
