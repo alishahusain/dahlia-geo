@@ -1,0 +1,53 @@
+---
+title: "Untitled"
+author: "kevho16"
+date: "January 24, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r data setup}
+library(tidyverse)
+object1 <- read.csv("China_EO_49to17.csv")
+object2 <- as_tibble(object1)
+
+```
+
+<!-- filters dataset for years after 1975 first, then plots outputs against Year of several provinces -->
+
+```{r visualization 1}
+
+filter(object2, Year >= 1975) %>%
+ggplot() +
+  geom_line(mapping = aes(x = Year, y = Guangdong_Output, color = "Guangdong"), size = 1.5, na.rm = TRUE) +
+  geom_line(mapping = aes(x = Year, y = Fujian_Output, color = "Fujian"), size = 1.5, na.rm = TRUE) +
+  geom_line(mapping = aes(x = Year, y = Qinghai_Output, color = "Qinghai"), size = 1.5, na.rm = TRUE) +
+  geom_line(mapping = aes(x = Year, y = Xinjiang_Output, color = "Xinjiang"), size = 1.5, na.rm = TRUE) +
+  scale_color_discrete(name = "Province") +
+  scale_y_continuous(name = "Values in 100 Million RMB") +
+  ggtitle("Output by Province, China, 1975 - 2017")
+  
+```
+
+
+Here we have a chart showing the output, in 100 million RMB, for 4 Provinces in China from 1975 through 2017. Output has been relatively flat for these 4 provinces up until 1990. At around that point, there appears to be a divergence in output increase, with some provinces experiencing greater output growth than others. What might explain this? Qinghai and Xinjiang are on the western part of the country, where the terrain is mountainous and fragmented, isolating those areas from the rest of the country. On the other hand, Guangdong and Fujian are along the coast where industrialization and economic activity are greater [(Batisse 2005)](https://journals.openedition.org/chinaperspectives/502).
+
+<!-- filters dataset for years after 1975 first, then plots Guandong Output + Enterpise with point and smooth geoms respectively -->
+
+```{r visualization 2}
+
+filter(object2, Year >= 1975) %>%
+ggplot() +
+  geom_point(mapping = aes(x = Guangdong_Enterprise, y = Guangdong_Output), na.rm = TRUE) +
+  geom_smooth(mapping = aes(x = Guangdong_Enterprise, y = Guangdong_Output), na.rm = TRUE) +
+  scale_y_continuous(name = "Output (100 million RMB)") +
+  scale_x_continuous(name = "Number of Enterprises") +
+  ggtitle("Guangdong Province Enterprise & Output")
+
+```
+
+
+Focusing in on Guangdong Province from the previous chart, this chart displays the relationship between the number of enterprises and output. Generally, the greater the number of enterprises the greater the output. Howerver, that isn't always the case as there are some instances of lower numbers of enterprises yet high output. When there are low numbers of enterprises but output remains high, that may be an indicator for greater instances of mergers/acquisitions and/or increased productivity.
