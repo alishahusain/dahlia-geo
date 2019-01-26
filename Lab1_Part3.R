@@ -1,4 +1,4 @@
-# Authors: Jin Chang
+# Authors: Jin Chang and Billy Wang
 # Date: 1/25/2019
 
 library(tidyverse)
@@ -114,12 +114,12 @@ output_enterprise <- ggplot(data=ratios, aes(x=Year)) +
   ggtitle("Relationship Between Outputs and Enterprises") +
   theme(plot.title = element_text(hjust=.5),legend.box = "horizontal")
 
-pop1 = read.csv("./groupHW1/GrossDomPop_byProvince.csv")
+pop1 = read.csv("GrossDomPop_byProvince.csv")
 pop2=as_tibble(pop1)
 p1 <- plot(pop2$Year, pop2$Beijing_GrossDomesticPopulation, main="Population in Beijing Last 10 Years (in 10,000)", pch=19)
 p2 <- plot(pop2$Year, pop2$Tianjin_GrossDomesticPopulation, main="Population in Tianjin Last 10 Years (in 10,000)", pch=19)
 
-growthRate = read.csv("./groupHW1/GrowthRate.csv")
+growthRate = read.csv("GrowthRate.csv")
 growthRate2=as_tibble(growthRate)
 natural_growthRate <- growthRate2[3,]
 years <- c("1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009", "2010","2011","2012","2013","2014","2015","2016","2017")
