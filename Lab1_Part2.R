@@ -36,24 +36,24 @@ line_grph2 <- filter(object2, Year >= 1975) %>%
 # Filters dataset by selecting specific provinces and their output
 selected_provinces <-
   object2 %>% select(Year, Shandong_Enterprise, Shandong_Output,
-                        Beijing_Enterprise, Beijing_Output,
-                        Shanghai_Enterprise, Shanghai_Output,
-                        Jiangsu_Enterprise, Jiangsu_Output,
-                        Liaoning_Enterprise, Liaoning_Output,
-                        Guangdong_Enterprise, Guangdong_Output,
-                        Yunnan_Enterprise, Yunnan_Output,
-                        Gansu_Enterprise, Gansu_Output,
-                        Xinjiang_Enterprise, Xinjiang_Output,
-                        Qinghai_Enterprise, Qinghai_Output,
-                        Ningxia_Enterprise, Ningxia_Output
-                        )
+                     Beijing_Enterprise, Beijing_Output,
+                     Shanghai_Enterprise, Shanghai_Output,
+                     Jiangsu_Enterprise, Jiangsu_Output,
+                     Liaoning_Enterprise, Liaoning_Output,
+                     Guangdong_Enterprise, Guangdong_Output,
+                     Yunnan_Enterprise, Yunnan_Output,
+                     Gansu_Enterprise, Gansu_Output,
+                     Xinjiang_Enterprise, Xinjiang_Output,
+                     Qinghai_Enterprise, Qinghai_Output,
+                     Ningxia_Enterprise, Ningxia_Output
+  )
 
 master = ggplot(data=selected_provinces, 
                 aes(x=Year, y=Shandong_Output,
                     color = "Shandong Enterprise" )) +
-                    geom_line(size=1) +
-                    xlab("Year") +
-                    ylab("Output (100 million RMB)")
+  geom_line(size=1) +
+  xlab("Year") +
+  ylab("Output (100 million RMB)")
 
 # Add each province to the plot
 add_beijing <- geom_line(size = 1.5, data=selected_provinces,
@@ -71,28 +71,31 @@ add_liaoning <- geom_line(size = 1.5, data=selected_provinces,
 
 # Combine all the variables 
 line_grph3 <- master + 
-              add_beijing + 
-              add_jiangsu + 
-              add_liaoning + 
-              add_shanghai +  
-              ggtitle("China Province Enterprise Output Analysis (Based on Most Enterprises)") + 
-              theme_update(plot.title = element_text(hjust = 0.5))
+  add_beijing + 
+  add_jiangsu + 
+  add_liaoning + 
+  add_shanghai +  
+  ggtitle("China Province: Enterprise and Economic Output (Based on Most Enterprises)") + 
+  theme_update(plot.title = element_text(hjust = 0.5))
 
 # Rename legend
-legend <- line_grph3$labels$colour <- "Provinces" 
+legend <- line_grph3$labels$colour <- "Province" 
 
 # Filters dataset by selecting specific provinces and their output
 master2 = ggplot(data=selected_provinces, 
                  aes(x=Year, y=Yunnan_Output,
                      color =  "Yunnan" )) +
-                     geom_line(size=1.5) + 
-                     xlab("Year") + 
-                     ylab("Output (100 million RMB)")
+  geom_line(size=1.5) + 
+  xlab("Year") + 
+  ylab("Output (100 million RMB)")
 
-# Add each province to the plot, Beijing variable is already mentioned from above
+# Add each province to the plot
+add_beijing <- geom_line(size = 1.5, data=selected_provinces,
+                         aes(x=Year, y=Beijing_Output,
+                             color = "Beijing"))
 add_guangdong <- geom_line(size = 1.5, data=selected_provinces,
-                         aes(x=Year, y=Guangdong_Output,
-                             color = "Guangdong"))
+                           aes(x=Year, y=Guangdong_Output,
+                               color = "Guangdong"))
 add_gansu <- geom_line(size = 1.5, data=selected_provinces,
                        aes(x=Year, y=Gansu_Output,
                            color = "Gansu"))
@@ -108,13 +111,13 @@ add_ningxia <- geom_line(size = 1.5, data=selected_provinces,
 
 # Combine all the variables into one line graph
 line_grph4 <- master2 +
-              add_beijing +
-              add_gansu +
-              add_xinjiang +
-              add_qinghai +
-              add_ningxia + 
-              ggtitle("China Province Enterprise Output Analysis (Starting Low Output)") +
-              theme_update(plot.title = element_text(hjust = 0.5))
+  add_beijing +
+  add_gansu +
+  add_xinjiang +
+  add_qinghai +
+  add_ningxia + 
+  ggtitle("China Province: Economic Output (Low Output Start)") +
+  theme_update(plot.title = element_text(hjust = 0.5))
 
 # Rename legend
 legend <- line_grph4$labels$colour <- "Provinces" 

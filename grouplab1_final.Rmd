@@ -34,26 +34,26 @@ There are a number of general problems with Chinese statistics. Search for artic
 line_grph1
 ```
 
-Here we have a chart showing the output, in 100 million RMB, for 4 Provinces in China from 1975 through 2017. Output has been relatively flat for these 4 provinces up until 1990. At around that point, there appears to be a divergence in output increase, with some provinces experiencing greater output growth than others. What might explain this? Qinghai and Xinjiang are on the western part of the country, where the terrain is mountainous and fragmented, isolating those areas from the rest of the country. On the other hand, Guangdong and Fujian are along the coast where industrialization and economic activity are greater [(Batisse 2005)](https://journals.openedition.org/chinaperspectives/502).
+Here we have a chart showing the output, in 100 million RMB, for 4 Provinces in China from 1975 through 2017. Output has been relatively flat for these 4 provinces up until 1990. At around that point, there appears to be a divergence in output increase, with some provinces experiencing greater output growth than others. What might explain this? Qinghai and Xinjiang are on the **western** part of the country, where the terrain is _mountainous_ and _fragmented_, isolating those areas from the rest of the country. On the other hand, Guangdong and Fujian are along the coast where industrialization and economic activity are greater [(Batisse 2005)](https://journals.openedition.org/chinaperspectives/502).
 
 ```{r visualization 2, echo=FALSE, warning=FALSE}
 line_grph2
 ```
 
-Focusing in on Guangdong Province from the previous chart, this chart displays the relationship between the number of enterprises and output. Generally, the greater the number of enterprises the greater the output. Howerver, that isn't always the case as there are some instances of lower numbers of enterprises yet high output. When there are low numbers of enterprises but output remains high, that may be an indicator for greater instances of mergers/acquisitions and/or increased productivity.
+Focusing in on Guangdong Province from the previous chart, this chart displays the **relationship** between the number of enterprises and output. Generally, the _greater_ the number of enterprises the _greater_ the output. Howerver, that isn't always the case as there are some instances of lower numbers of enterprises yet high output. When there are **low** numbers of enterprises but output remains **high**, that may be an indicator for _greater_ instances of mergers/acquisitions and/or _increased_ productivity.
 
 ```{r visualization 3, echo=FALSE, warning=FALSE}
 line_grph3
 ```
 
-Here are the top 5 provinces (and their enterprise) and the output that they produced from the years 1949 to 2017. These companies had the highest number of units from the start of 1949. As shown, all five companies started with low outputs.  After 1990 is when all five companies started to disperse with different values in output. Jiangsu Enterprise has the highest output with about 143016.94 million RMB in the year 2014 followed by Shandong as a close second with an output of 129906 million RMB in the year 2013. 
-Beijing Enterprise has the lowest value of output of 18087.27 million RMB in the year 2016. 
+Here are the **top 5** provinces and the output that they produced from the years _1949_ to _2017_. These provinces had the greatest enterprises from the start of 1949. As shown, all five started with **_low outputs_**.  After 1990 is when all five companies started to disperse with _different_ values in output. Jiangsu Enterprise has the _highest_ output with about 143016.94 hundred million RMB in the year 2014 followed by Shandong Enterprise as a close second with an output of 129906 hundred million RMB in the year 2013. 
+Beijing Enterprise has the _lowest value_ of output of 18087.27 hundred million RMB in the year 2016. 
 
 ```{r visualization 4, echo=FALSE, warning=FALSE}
 line_grph4
 ```
 
-The fourth presented are provinces whom started small in the beginning. It would be intersesting to see if said provinces grew a substantial amount of output from 1949 to 2017. The provinces that had less than 2 million RMB are: Yunnan, Beijing, Gansu, Xinjiang, Qinghai, and Ningxia. There was not much change from 1949 to 1985. It was not until 1990 where there was a change in output for each province. There was an ongoing trend of staying consistent for the five provinces: Gansu, Ningxia, Qinghai, Xinjiang, and Yunnan as it was approaching the year 2000. There was a huge increase for the province Guangdong as it consistently grew larger outputs than the other five provinces. 
+The fourth visualization presented are provinces whom started with a **small** output value in 1949. It was a curiosity to see if said provinces grew a substantial amount of output from 1949 to 2017. The provinces that had _less than 2 hundred million RMB are_: Yunnan, Beijing, Gansu, Xinjiang, Qinghai, and Ningxia. There was not much change from 1949 to 1985. It was not until **1990** where there was a _change_ in output for each province. There was an ongoing trend of staying consistent for the five provinces: Gansu, Ningxia, Qinghai, Xinjiang, and Yunnan as it was approaching the year 2000. There was a _huge_ increase for the province _Guangdong_ as it **gradually** grew larger outputs than the other five provinces. 
 Guangdong went from 9.89 million RMB in 1949 to 9486.79 million RMB in the year 2011. 
 
 ```{r visualization 5, echo=FALSE, warning=FALSE}
@@ -63,7 +63,7 @@ line_grph5
 Beijing is symbolized by the blue dots, 
 Shanghai is symbolized by the red dots. 
 
-The purpose of this visualization is to compare the economic output between the two wealthiest provinces in China, Beijing and Shanghai. Up until around 1986, both provinces had roughly the same output, but after that year both provinces began to experience exponential growth, with Shanghai's rate of increase in output being higher than Beijing's. 
+The purpose of this visualization is to compare the economic output between the two _wealthiest_ provinces in China, Beijing and Shanghai. Up until around 1986, both provinces had roughly the same output, but after that year both provinces began to experience **exponential growth**, with Shanghai's rate of increase in output being _higher_ than Beijing's. 
 
 
 #Part 3
@@ -76,7 +76,7 @@ plot3
 ```
 
 ### How we treated NA Values
-We did not modify or remove the NA values during the calculation or while plotting because we believe that there may be a loss in data. Furthermore, we believe the ommission of this values may impact the analysis negatively.
+We did not modify or remove the NA values during the calculation or while plotting because we believe that there may be a _loss_ in data. Furthermore, we believe the ommission of this values may impact the analysis **negatively**.
 
 ##Second
 ```{r second, echo=FALSE, warning=FALSE}
@@ -84,7 +84,7 @@ national.plot
 ```
 
 ###Analysis
-Based on the figure above we noticed that Beijing originally had a large percent of enterprises in the past however, there seems to be a large drop near 1960 and it has been consistent until the early 2000s. Around this period it did increase however, dropped again. Unlike Beijing Tianjing shows a consistent trend until the early 2000s where just like Beijing it increased then the percent of enterprises dropped around the year 2000. Similarly, Shanxi does show an increase in trend before 1960 however, in contrast to the other three provinces the national share total gradually begins to decrease around 1980. Conversely, although Hebei shows an increase in trend before 1960, the national shares total does not decrease. Rather, it gradually increasing but, drops near 2010.
+Based on the figure above we noticed that Beijing originally had a **large** percent of enterprises in the past. However, there seems to be a large drop near 1960 and it has been consistent until the early 2000s. Around this period it did increase however, dropped again. Unlike **_Beijing_**, **_Tianjin_** shows a consistent trend until the early 2000s where just like Beijing it _increased_, then the percent of enterprises dropped around the year 2000. Similarly, **_Shanxi_** does show an increase in trend before 1960 however, in contrast to the other three provinces the national share total _gradually_ begins to decrease around 1980. Conversely, although **_Hebei_** shows an increase in trend before 1960, the national shares total _does not_ decrease. Rather, it gradually increasing but, drops near 2010.
 
 
 ##Third
@@ -93,5 +93,4 @@ output_enterprise
 ```
 
 ###Analysis
-Our team noticed that over time the price per enterprise was consistent until it drastically increased around 1997. Similarly, the plot shows that all five provinces increase at a similar rate. However, around 2010 Shanghai showed a large drop in price per enterprise in contrast to the trend that Beijing and Tianjin exhibited. Conversely, both Heilongjiang and Shanghai showed an interesting occurence since both province's trend just stopped around the 2010. Overall, our team noticed that over time all five province's price per enterprise was consistent until 2010 where the ratios started to differ.
-
+Our team noticed that over time the **price per enterprise** was consistent until it drastically increased around 1997. Similarly, the plot shows that _all five provinces_ increase at a similar rate. However, around 2010 **_Shanghai_** showed a large drop in price per enterprise in contrast to the trend that Beijing and Tianjin exhibited. Conversely, both **_Heilongjiang_** and **_Shanghai_** showed an interesting occurrence since both province's trend just _stopped_ around the 2010. Overall, our team noticed that over time all five province's price per enterprise was consistent until 2010 where the ratios started to differ.
