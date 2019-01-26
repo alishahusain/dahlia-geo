@@ -1,3 +1,6 @@
+# Authors: Jin Chang
+# Date: 1/25/2019
+
 library(tidyverse)
 library(ggplot2)
 
@@ -12,7 +15,7 @@ data$Year <- Year
 produce_ratios <- function(col1, col2) {
   # Create a data frame that contains the calculate the ratios.
   results <- data.frame(data$Year, data[[col1]], data[[col2]], data[[col1]] / data[[col2]])
-
+  
   # Rename the column names
   colnames(results) <- c("Year", col1, col2, "Ratios")
   return(results)
@@ -80,7 +83,7 @@ national.plot <- ggplot(data=national_share, aes(x=Year)) +
 ## Selected several provinces to analyze
 six_prov <- data %>%
   select(Year, Beijing_Enterprise, Beijing_Output, Tianjin_Enterprise, Tianjin_Output,
-        Shaanxi_Enterprise, Shaanxi_Output, Shanghai_Enterprise, Shanghai_Output, Heilongjiang_Enterprise, Heilongjiang_Output)
+         Shaanxi_Enterprise, Shaanxi_Output, Shanghai_Enterprise, Shanghai_Output, Heilongjiang_Enterprise, Heilongjiang_Output)
 
 ## Create a new dataframe consisting of ratios
 ratios <- data.frame(data$Year)
