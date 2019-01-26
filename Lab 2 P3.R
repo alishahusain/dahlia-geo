@@ -28,29 +28,55 @@ out3 <- produce_ratios("InnerMongolia_Output","Hainan_Output")
 
 ## Creates a plot of the comparison between Liaoning and Guandong
 ggplot(data=out1, aes(x=Year, y=Ratios)) +
-  geom_point(color="Blue") +
+  geom_line(color="Blue") +
   xlab("Year") +
   ylab("Output Ratio") +
   ggtitle("Ratio Comparison between Liaoning and Guandong") +
-  theme(plot.title = element_text(hjust=.5), axis.text.x = element_text(angle = 90, hjust=1))
+  theme(plot.title = element_text(hjust=.5))
 
 ## Creates a plot of the comparison between Beijing and Jilin
 ggplot(data=out2, aes(x=Year, y=Ratios)) +
-  geom_tile(color="DarkGreen", size=1) +
+  geom_line(color="DarkGreen") +
   xlab("Year") +
   ylab("Output Ratio") +
   ggtitle("Ratio Comparison between Beijing and Jilin") +
-  theme(plot.title = element_text(hjust=.5), axis.text.x = element_text(angle = 90, hjust=1))
+  theme(plot.title = element_text(hjust=.5))
 
 ## Creates a plot of the comparison between InnerMongolia and Hainan
 ggplot(data=out3, aes(x=Year, y=Ratios)) +
-  geom_point(color="DarkOrange", size=1) +
+  geom_line(color="DarkOrange") +
   xlab("Year") +
   ylab("Output Ratio") +
   ggtitle("Ratio Comparison between InnerMongolia and Hainan") +
-  theme(plot.title = element_text(hjust=.5), axis.text.x = element_text(angle = 90, hjust=1))
+  theme(plot.title = element_text(hjust=.5))
 
 # Step 2
+# Retrieve all the enterprise columns 
+sum_Enterprise <- data[,grep("_Enterprise", colnames(data))]
+
+# Calculat the national total of Enterprises
+data$Enterprise_Total <- rowSums(sum_Enterprise, na.rm = TRUE)
+for(index in 1:ncol(sum_Enterprise)) {
+  temp_df <- produce_ratios(colnames(sum_Enterprise)[index], "Enterprise_Total")
+  
+  # New column name
+  name <- gsub("_\\w+","_Total_Ratio", colnames(sum_Enterprise)[index])
+  national_share[[name]] <- temp_df$Ratios
+}
+
+national_share <- national_share[1:6]
+
+ggplot(data=national_share, aes(x=Year)) +
+  geom_line(aes(y=Ningxia_Total_Ratio , colour="Ningxia")) +
+  geom_line(aes(y=Xinjiang_Total_Ratio, colour="Xinjiang")) +
+  geom_line(aes(y=Beijing_Total_Ratio, colour="Beijing")) +
+  geom_line(aes(y=Tianjin_Total_Ratio, colour="Tianjin")) +
+  geom_line(aes(y=Hebei_Total_Ratio, colour="Hebei")) +
+  xlab("Year") +
+  ylab("Percent of Enterprise Total") +
+  labs(color="Provinces") +
+  ggtitle("National Shares of The Total") +
+  theme(plot.title = element_text(hjust=.5),legend.box = "horizontal")
 
 # Step 3
 ## Selected several provinces to analyze
@@ -62,7 +88,7 @@ six_prov <- data %>%
 ratios <- data.frame(data$Year)
 colnames(ratios) <- c("Year")
 
-# Utilizing a counter in a while loop to calculate all 4 ratios for 4 different provinces
+# Utilizing a counter as the index in a while loop as well as the position
 i <- 2
 while(i <= 10) {
   temp_df <- produce_ratios(colnames(six_prov)[i + 1], colnames(six_prov)[i])
@@ -85,7 +111,7 @@ ggplot(data=ratios, aes(x=Year)) +
   ylab("Ratio (Output per Enterprise)") +
   labs(color="Provinces") +
   ggtitle("Relationship Between Outputs and Enterprises") +
-  theme(plot.title = element_text(hjust=.5), axis.text.x = element_text(angle = 90, hjust=1),legend.box = "horizontal")
+  theme(plot.title = element_text(hjust=.5),legend.box = "horizontal")
 
 ### Summarize
 # Our team noticed that over time the price per enterprise was consistent until it drastically increased around 1997. Similarly, the 
