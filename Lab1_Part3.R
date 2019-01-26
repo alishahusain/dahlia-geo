@@ -156,4 +156,4 @@ while(i <= ncol(pop1)) {
   name <- gsub("_GrossDomesticPopulation","", colnames(pop1)[i])
   dflist[[i]] <- cpy[,grep(name, colnames(cpy))]
   i <- i + 1
-}
+} 
