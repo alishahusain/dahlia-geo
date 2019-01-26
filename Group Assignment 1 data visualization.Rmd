@@ -25,7 +25,10 @@ ggplot(data = China_EO_49to17) +
 ```
 
 
+Beijing is symbolized by the blue dots, 
+Shanghai is symbolized by the red dots. 
 
-```{r}
-```
+The purpose of this visualization is to compare the economic output between the two wealthiest provinces in China, Beijing and Shanghai. Up until around 1986, both provinces had roughly the same output, but after that year both provinces began to experience exponential growth, with Shanghai's rate of increase in output being higher than Beijing's. 
+
+
 
