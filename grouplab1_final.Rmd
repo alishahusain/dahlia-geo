@@ -8,8 +8,8 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-source('Lab 2 P3.R')
-source('Lab2_Part2.R')
+source('Lab1_Part2.R')
+source('Lab1_Part3.R')
 ```
 #Part 1
 ##First
