@@ -8,9 +8,7 @@ Year <- seq(from=1949, to=2017)
 data$Year <- Year
 
 # Returns a dataframe with the calculated output ratio of the
-# two specified columns. We did not modify or remove the NA values 
-# during the calculation portion as we believe that there may be a loss
-# in data and may impact the analysis negatively. 
+# two specified columns. 
 produce_ratios <- function(col1, col2) {
   # Create a data frame that contains the calculate the ratios.
   results <- data.frame(data$Year, data[[col1]], data[[col2]], data[[col1]] / data[[col2]])
