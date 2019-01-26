@@ -114,3 +114,5 @@ Next, we combine both the Enterprise/Output data, as well as the new Population 
 plot(beijingEnterprise_Pop$Year, beijingEnterprise_Pop$ratio, main="Enterprise/Population Ratio in Beijing Last 10 Years", pch=19)
 bigMerge(provinceList)
 ```
+
+From our line plots, we can see certain provinces such as Beijing, Tianjin, Shanxi, and Shanghai have similar plotted trajectories to our growth rate function. This could be illuminated by the fact that these provinces have significantly higher Investment in Fixed Assets (National Bureau of Statistics) as compared to the other provinces as well as higher Number of Employed Personnel, transforming the Enterprise/Population metric into more of a productive unit of value/person metric, which also makes sense as median average wage is higher in Beijing & Shanghai than almost the rest of the provinces listed.  I wish I could have expanded more into other variable factors to draw correlations, but I wanted to stay on topic, so those were not included.
