@@ -1,7 +1,6 @@
 library(tidyverse)
 library(ggplot2)
 
-# file
 data <- read.csv("China_EO_49to17.csv",fileEncoding = "latin1")
 data <- as_tibble(data)
 
@@ -27,7 +26,7 @@ out2 <- produce_ratios("Beijing_Output", "Jilin_Output")
 out3 <- produce_ratios("InnerMongolia_Output","Hainan_Output")
 
 ## Creates a plot of the comparison between Liaoning and Guandong
-ggplot(data=out1, aes(x=Year, y=Ratios)) +
+plot1 <- ggplot(data=out1, aes(x=Year, y=Ratios)) +
   geom_line(color="Blue") +
   xlab("Year") +
   ylab("Output Ratio") +
@@ -35,7 +34,7 @@ ggplot(data=out1, aes(x=Year, y=Ratios)) +
   theme(plot.title = element_text(hjust=.5))
 
 ## Creates a plot of the comparison between Beijing and Jilin
-ggplot(data=out2, aes(x=Year, y=Ratios)) +
+plot2 <- ggplot(data=out2, aes(x=Year, y=Ratios)) +
   geom_line(color="DarkGreen") +
   xlab("Year") +
   ylab("Output Ratio") +
@@ -43,7 +42,7 @@ ggplot(data=out2, aes(x=Year, y=Ratios)) +
   theme(plot.title = element_text(hjust=.5))
 
 ## Creates a plot of the comparison between InnerMongolia and Hainan
-ggplot(data=out3, aes(x=Year, y=Ratios)) +
+plot3 <- ggplot(data=out3, aes(x=Year, y=Ratios)) +
   geom_line(color="DarkOrange") +
   xlab("Year") +
   ylab("Output Ratio") +
@@ -56,6 +55,8 @@ sum_Enterprise <- data[,grep("_Enterprise", colnames(data))]
 
 # Calculat the national total of Enterprises
 data$Enterprise_Total <- rowSums(sum_Enterprise, na.rm = TRUE)
+
+national_share <- data.frame(data$Year)
 for(index in 1:ncol(sum_Enterprise)) {
   temp_df <- produce_ratios(colnames(sum_Enterprise)[index], "Enterprise_Total")
   
@@ -64,14 +65,13 @@ for(index in 1:ncol(sum_Enterprise)) {
   national_share[[name]] <- temp_df$Ratios
 }
 
-national_share <- national_share[1:6]
+national_share <- national_share[1:5]
 
-ggplot(data=national_share, aes(x=Year)) +
-  geom_line(aes(y=Ningxia_Total_Ratio , colour="Ningxia")) +
-  geom_line(aes(y=Xinjiang_Total_Ratio, colour="Xinjiang")) +
+national.plot <- ggplot(data=national_share, aes(x=Year)) +
   geom_line(aes(y=Beijing_Total_Ratio, colour="Beijing")) +
   geom_line(aes(y=Tianjin_Total_Ratio, colour="Tianjin")) +
   geom_line(aes(y=Hebei_Total_Ratio, colour="Hebei")) +
+  geom_line(aes(y=Shanxi_Total_Ratio, colour="Shanxi")) +
   xlab("Year") +
   ylab("Percent of Enterprise Total") +
   labs(color="Provinces") +
@@ -101,7 +101,7 @@ while(i <= 10) {
   i <- i + 2
 }
 
-ggplot(data=ratios, aes(x=Year)) +
+output_enterprise <- ggplot(data=ratios, aes(x=Year)) +
   geom_line(aes(y=Beijing_Ratios, colour="Beijing")) +
   geom_line(aes(y=Tianjin_Ratios, colour="Tianjin")) +
   geom_line(aes(y=Shaanxi_Ratios, colour="Shaanxi")) +
@@ -112,11 +112,4 @@ ggplot(data=ratios, aes(x=Year)) +
   labs(color="Provinces") +
   ggtitle("Relationship Between Outputs and Enterprises") +
   theme(plot.title = element_text(hjust=.5),legend.box = "horizontal")
-
-### Summarize
-# Our team noticed that over time the price per enterprise was consistent until it drastically increased around 1997. Similarly, the 
-# plot shows that all five provinces increase at a similar rate. However, around 2010 Shanghai showed a large drop in price per
-# enterprise in contrast to the trend that Beijing and Tianjin exhibited. Conversely, both Heilongjiang and Shanghai showed an interesting
-# occurence since both province's trend just stopped around the 2010. Overall, our team noticed that over time all five province's price per
-# enterprise was consistent until 2010 where the ratios started to differ.
 

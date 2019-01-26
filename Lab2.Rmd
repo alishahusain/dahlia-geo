@@ -1,0 +1,39 @@
+---
+title: "Lab2"
+author: "Jin Chang"
+date: "1/25/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+source('Lab 2 P3.R')
+```
+
+#Part 3
+
+##First
+```{r first, echo=FALSE, warning=FALSE}
+plot1
+plot2
+plot3
+```
+
+##Second
+```{r second, echo=FALSE, warning=FALSE}
+national.plot
+```
+
+###Analysis
+Based on the figure above we noticed that Beijing originally had a large percent of enterprises in the past however, there seems to be a large drop near 1960 and it has been consistent until the early 2000s. Around this period it did increase however, dropped again. Unlike Beijing Tianjing shows a consistent trend until the early 2000s where just like Beijing it increased then the percent of enterprises dropped around the year 2000. Similarly, Shanxi does show an increase in trend before 1960 however, in contrast to the other three provinces the national share total gradually begins to decrease around 1980. Conversely, although Hebei shows an increase in trend before 1960, the national shares total does not decrease. Rather, it gradually increasing but, drops near 2010.
+
+##Third
+```{r third, echo=FALSE, warning=FALSE}
+output_enterprise
+```
+
+###Analysis
+Our team noticed that over time the price per enterprise was consistent until it drastically increased around 1997. Similarly, the plot shows that all five provinces increase at a similar rate. However, around 2010 Shanghai showed a large drop in price per enterprise in contrast to the trend that Beijing and Tianjin exhibited. Conversely, both Heilongjiang and Shanghai showed an interesting occurence since both province's trend just stopped around the 2010. Overall, our team noticed that over time all five province's price per enterprise was consistent until 2010 where the ratios started to differ.
+
+
