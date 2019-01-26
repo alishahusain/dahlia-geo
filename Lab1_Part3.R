@@ -114,3 +114,51 @@ output_enterprise <- ggplot(data=ratios, aes(x=Year)) +
   ggtitle("Relationship Between Outputs and Enterprises") +
   theme(plot.title = element_text(hjust=.5),legend.box = "horizontal")
 
+pop1 = read.csv("./groupHW1/GrossDomPop_byProvince.csv")
+pop2=as_tibble(pop1)
+p1 <- plot(pop2$Year, pop2$Beijing_GrossDomesticPopulation, main="Population in Beijing Last 10 Years (in 10,000)", pch=19)
+p2 <- plot(pop2$Year, pop2$Tianjin_GrossDomesticPopulation, main="Population in Tianjin Last 10 Years (in 10,000)", pch=19)
+
+growthRate = read.csv("./groupHW1/GrowthRate.csv")
+growthRate2=as_tibble(growthRate)
+natural_growthRate <- growthRate2[3,]
+years <- c("1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009", "2010","2011","2012","2013","2014","2015","2016","2017")
+p3 <- plot(years, natural_growthRate, main="Natural Growth Rate of Chinese Citizens Totaled in %", pch=19)
+
+by_year_desc <- data[order(-data$Year),]
+mergedTable <- merge(by_year_desc, pop2, by.x="Year")
+province2000 <- function(province) {
+  output <- filter(mergedTable, Year >= '2000') %>% select(Year,paste0(province,"_Enterprise"), paste0(province,"_GrossDomesticPopulation"))
+  output2 <- mutate(output, ratio = output[,2]/output[,3])
+  return(output2)
+}
+beijingEnterprise_Pop <- province2000("Beijing")
+print(beijingEnterprise_Pop)
+plot(beijingEnterprise_Pop$Year, beijingEnterprise_Pop$ratio, main="Enterprise/Population Ratio in Beijing Last 10 Years", pch=19)
+
+
+provinceList <- c("Beijing", "Tianjin", "Hebei", "Shanxi", "InnerMongolia", "Liaoning", "Jilin", "Heilongjiang", "Shanghai")
+bigMerge <- function(names) {
+  bigMergedTable <- filter(mergedTable, Year >= '2000')
+  for (i in 1: length(names)) {
+    currentEnter <- bigMergedTable %>% select(paste0(names[i],"_Enterprise"))
+    currentPop <- bigMergedTable %>% select(paste0(names[i], "_GrossDomesticPopulation"))
+    print(currentEnter/currentPop)
+    print(ggplot(province2000(names[i]), aes(x = Year, y = ratio)) + 
+            geom_line(color = "#660066") +
+            geom_point(color = "#FF8000") +
+            labs(x = "Year", y = "Ratio"))
+  }
+  return (bigMergedTable)
+}
+
+cpy <- data %>%
+  filter(Year >= 2000)
+cpy <- cbind(cpy, pop1)
+i <- 2
+dflist <- list()
+while(i <= ncol(pop1)) {
+  name <- gsub("_GrossDomesticPopulation","", colnames(pop1)[i])
+  dflist[[i]] <- cpy[,grep(name, colnames(cpy))]
+  i <- i + 1
+}

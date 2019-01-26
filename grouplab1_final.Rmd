@@ -86,3 +86,23 @@ output_enterprise
 
 ###Analysis
 Our team noticed that over time the **price per enterprise** was consistent until it drastically increased around 1997. Similarly, the plot shows that _all five provinces_ increase at a similar rate. However, around 2010 **_Shanghai_** showed a large drop in price per enterprise in contrast to the trend that Beijing and Tianjin exhibited. Conversely, both **_Heilongjiang_** and **_Shanghai_** showed an interesting occurrence since both province's trend just _stopped_ around the 2010. Overall, our team noticed that over time all five province's price per enterprise was consistent until 2010 where the ratios started to differ.
+
+## Intro
+Below we see population data gathered from the National Bureau of Statistics of China. Formatting of the original raw file was odd & difficult to work with, so I modified it and cleaned it in a separate file. Below you will see the Gross Domestic Populations of 
+the first 10 provinces, so it matches up well with the Enterprise/Output data, as well as a cut year range from 2000 to 2017. 
+
+```{r four, echo=FALSE, warning=FALSE}
+p1
+p2
+```
+
+Here we see population graphs for both the province of Beijing as well as Tianjin. Notice how they similarly mark against one another in a logarithmic fashion. As previously mentioned, the timeframe of 2000 to 2017 was chosen purpusely as you can see from around 2000 to ~2010, China was experiencing huge population growth, to the point of exponential codification. However, post 2010 you see a sharp decline in the growth rate as exemplified below, taken as well from the Natural Bureau of of Statistics of China, which causes the progression from exponential growth to a more modest logarithmic. 
+
+```{r five, echo=FALSE, warning=FALSE}
+p3
+```
+Next, we combine both the Enterprise/Output data, as well as the new Population Data, to check for hidden variables. We will normalize the Enterpise data to the Gross Domestic Population variable to limit the role of external factors and try and derive a relationship from it. Below you will see a function that takes in the province names of all ten listed and calculates it's enterprise to population ratio, followed by a line plot to add contour to the pattern. It runs through Beijing then Tianjin then Hebei, etc so you the viewer can easily visually compare Enterprise/Population ratios from the top down. 
+
+```{r, echo=FALSE}
+bigMerge(provinceList)
+```
