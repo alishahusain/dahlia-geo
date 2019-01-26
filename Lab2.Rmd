@@ -20,6 +20,9 @@ plot2
 plot3
 ```
 
+### How we treated NA Values
+We did not modify or remove the NA values during the calculation or while plotting because we believe that there may be a loss in data. Furthermore, we believe the ommission of this values may impact the analysis negatively.
+
 ##Second
 ```{r second, echo=FALSE, warning=FALSE}
 national.plot
