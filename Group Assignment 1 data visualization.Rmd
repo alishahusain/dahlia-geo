@@ -1,0 +1,31 @@
+---
+title: "Group Project 1 Data Visualization"
+author: "Alisha Husain"
+date: "January 25, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+```{r, echo = FALSE}
+library(readr)
+library(ggplot2)
+China_EO_49to17 <- read_csv("China_EO_49to17.csv")
+ggplot(data = China_EO_49to17) +
+  labs(title = "Differences in Economic Output in Beijing and Shanghai, China") +
+  labs(subtitle = "1949-2017") +
+  labs(y = "Output in units of 100 million RMB") +
+  theme(axis.text.x = element_text(size = 6, angle = 90)) +
+  geom_point(na.rm = TRUE, mapping = aes(x = Year, y = Beijing_Output), color = "blue") +
+  geom_point(na.rm = TRUE, mapping = aes(x = Year, y = Shanghai_Output), color = "red") 
+```
+
+
+
+```{r}
+```
+
