@@ -116,14 +116,11 @@ output_enterprise <- ggplot(data=ratios, aes(x=Year)) +
 
 pop1 = read.csv("GrossDomPop_byProvince.csv")
 pop2=as_tibble(pop1)
-p1 <- plot(pop2$Year, pop2$Beijing_GrossDomesticPopulation, main="Population in Beijing Last 10 Years (in 10,000)", pch=19)
-p2 <- plot(pop2$Year, pop2$Tianjin_GrossDomesticPopulation, main="Population in Tianjin Last 10 Years (in 10,000)", pch=19)
 
 growthRate = read.csv("GrowthRate.csv")
 growthRate2=as_tibble(growthRate)
 natural_growthRate <- growthRate2[3,]
 years <- c("1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009", "2010","2011","2012","2013","2014","2015","2016","2017")
-p3 <- plot(years, natural_growthRate, main="Natural Growth Rate of Chinese Citizens Totaled in %", pch=19)
 
 by_year_desc <- data[order(-data$Year),]
 mergedTable <- merge(by_year_desc, pop2, by.x="Year")
@@ -134,8 +131,6 @@ province2000 <- function(province) {
 }
 beijingEnterprise_Pop <- province2000("Beijing")
 print(beijingEnterprise_Pop)
-plot(beijingEnterprise_Pop$Year, beijingEnterprise_Pop$ratio, main="Enterprise/Population Ratio in Beijing Last 10 Years", pch=19)
-
 
 provinceList <- c("Beijing", "Tianjin", "Hebei", "Shanxi", "InnerMongolia", "Liaoning", "Jilin", "Heilongjiang", "Shanghai")
 bigMerge <- function(names) {
