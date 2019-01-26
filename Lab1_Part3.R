@@ -1,4 +1,4 @@
-# Author: Jin Chang
+# Authors: Jin Chang
 # Date: 1/25/2019
 
 library(tidyverse)
