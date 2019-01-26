@@ -1,0 +1,97 @@
+---
+title: "Group Lab 1 - Changes in the Geography of Chinese Production"
+author: "Carmelita DeLeon"
+date: "January 25, 2019"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r, echo=FALSE}
+library(tidyverse)
+library(ggplot2)
+file_name <- read.csv("China_EO_49to17.csv")
+china_data <- as_tibble(file_name)
+
+# filter out to specifc provinces needed
+selected_provinces <-
+  china_data %>% select(Year, Shandong_Enterprise, Shandong_Output,
+                        Beijing_Enterprise, Beijing_Output,
+                        Shanghai_Enterprise, Shanghai_Output,
+                        Jiangsu_Enterprise, Jiangsu_Output,
+                        Liaoning_Enterprise, Liaoning_Output,
+                        Guangdong_Enterprise, Guangdong_Output,
+                        Heilongjiang_Enterprise, Heilongjiang_Output
+                        )
+                       
+
+master = ggplot(data=selected_provinces, aes(x=Year, y=Shandong_Output, color = "Shandong Enterprise" )) + geom_line(size=1)+xlab("Year")+ylab("Output (100 million RMB)")
+
+# add each province to the plot
+add_beijing <- geom_line(size = 1, data=selected_provinces,
+                         aes(x=Year, y=Beijing_Output,
+                         color = "Beijing Enterprise"))
+add_shanghai <- geom_line(size = 1, data=selected_provinces,
+                         aes(x=Year, y=Shanghai_Output,
+                         color = "Shanghai Enterprise"))
+add_jiangsu <- geom_line(size = 1, data=selected_provinces,
+                         aes(x=Year, y=Jiangsu_Output,
+                         color = "Jiangsu Enterprise"))
+add_liaoning <- geom_line(size = 1, data=selected_provinces,
+                         aes(x=Year, y=Liaoning_Output,
+                         color = "Liaoning Enterprise"))
+
+# Combine all the variables 
+plot <- master + add_beijing + add_jiangsu + add_liaoning + add_shanghai +  ggtitle("Top 5 China Enterprises Analysis") + theme_update(plot.title = element_text(hjust = 0.5))
+
+# Rename legend
+legend <- plot$labels$colour <- "Companies" 
+
+plot
+
+```
+
+### Visualization 3
+Here are the top 5 companies and the output that they produced from the years 1949 to 2017. These companies had the highest number of units from the start of 1949. As shown, all five companies started with low outputs.  After 1990 is when all five companies started to disperse with different values in output. Jiangsu Enterprise has the highest output with about 143016.94 million RMB in the year 2014 followed by Shandong as a close second with an output of 129906 million RMB in the year 2013. 
+Beijing Enterprise has the lowest value of output of 18087.27 million RMB in the year 2016. 
+
+```{r vis_2, echo=FALSE}
+
+master2 = ggplot(data=selected_provinces, aes(x=Year, y=Shandong_Output, color =  "Shandong" )) + geom_line(size=1.5)+xlab("Year")+ylab("Output (100 million RMB)")
+
+# add each province to the plot
+add_beijing <- geom_line(size = 1.5, data=selected_provinces,
+                         aes(x=Year, y=Guangdong_Output,
+                         color = "Guangdong"))
+add_heilongjiang <- geom_line(size = 1.5, data=selected_provinces,
+                         aes(x=Year, y=Heilongjiang_Output,
+                         color = "Heilongjiang"))
+add_jiangsu <- geom_line(size = 1.5, data=selected_provinces,
+                         aes(x=Year, y=Jiangsu_Output,
+                         color = "Jiangsu"))
+add_liaoning <- geom_line(size = 1.5, data=selected_provinces,
+                         aes(x=Year, y=Liaoning_Output,
+                         color = "Liaoning"))
+
+
+# Combine all the variables 
+plot2 <- master2 + add_beijing + add_jiangsu + add_liaoning + add_heilongjiang +  ggtitle("China Province Enterprise Output Analysis") + theme_update(plot.title = element_text(hjust = 0.5))
+
+# Rename legend
+legend <- plot2$labels$colour <- "Companies" 
+
+plot2
+
+```
+
+### Visualization 4
+
+The next visualization presents the companies whom started with the most output value in the year 1949. Not included were provinces that had an "NA" value. It was a curiosity to see how a company started well in the beginning, and if they stayed consistent (or lost value). The findings were that some companies raised more output. The company that attained the highest amount of output in the beginning was Jiangsu Enterprise with a value of 15.89 million RMB. In the year 2017 Jiangsu attained a value of 143016.9 RMB.
+The company that attained the lowest amount of output in the year 2017 was Heilongjiang with a value of 13423.55 RMB  in 2014. It started with 7.53 million RMB.
+
+
+                         
